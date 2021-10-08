@@ -20,31 +20,63 @@ public class FripperController : MonoBehaviour
 
         //フリッパーの傾きを設定
         SetAngle(this.defaultAngle);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        int i;
+        bool leftTouch = false, rightTouch = false;
 
-        //左矢印キーを押した時左フリッパーを動かす
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag")
+        //タッチ操作
+        Touch[] myTouches = Input.touches;
+        for (i = 0; i < Input.touchCount; i++)
         {
-            SetAngle(this.flickAngle);
-        }
-        //右矢印キーを押した時右フリッパーを動かす
-        if (Input.GetKeyDown(KeyCode.RightArrow) && tag == "RightFripperTag")
-        {
-            SetAngle(this.flickAngle);
+            if (myTouches[i].phase == TouchPhase.Moved || myTouches[i].phase == TouchPhase.Stationary) 
+            {
+                if (myTouches[i].position.x < Screen.width / 2) 
+                {
+                    leftTouch = true;
+                }
+                else
+                {
+                    rightTouch = true;
+                }
+            }
         }
 
-        //矢印キー離された時フリッパーを元に戻す
-        if (Input.GetKeyUp(KeyCode.LeftArrow) && tag == "LeftFripperTag")
+
+        if (tag == "LeftFripperTag")
         {
-            SetAngle(this.defaultAngle);
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)
+                || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)
+                || leftTouch) 
+            {
+                //左フリッパーを動かす
+                SetAngle(this.flickAngle);
+            }
+            else
+            {
+                //左フリッパーを戻す
+                SetAngle(this.defaultAngle);
+            }
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow) && tag == "RightFripperTag")
+        else if (tag == "RightFripperTag")
         {
-            SetAngle(this.defaultAngle);
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)
+               || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)
+               || rightTouch) 
+            {
+                //右フリッパーを動かす
+                SetAngle(this.flickAngle);
+            }
+            else
+            {
+                //右フリッパーを戻す
+                SetAngle(this.defaultAngle);
+            }
         }
     }
 
