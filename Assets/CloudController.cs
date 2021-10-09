@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CloudController : MonoBehaviour
 {
-
     //最小サイズ
     private float minimum = 1.0f;
     //拡大縮小スピード

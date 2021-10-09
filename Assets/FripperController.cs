@@ -20,8 +20,6 @@ public class FripperController : MonoBehaviour
 
         //フリッパーの傾きを設定
         SetAngle(this.defaultAngle);
-
-
     }
 
     // Update is called once per frame
@@ -46,7 +44,6 @@ public class FripperController : MonoBehaviour
                 }
             }
         }
-
 
         if (tag == "LeftFripperTag")
         {

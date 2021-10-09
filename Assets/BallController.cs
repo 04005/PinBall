@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
-
     //ボールが見える可能性のあるz軸の最大値
     private float visiblePosZ = -6.5f;
 

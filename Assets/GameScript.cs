@@ -1,31 +1,12 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
-
 public class GameScript : MonoBehaviour
 {
-    string getScoreString(int n)
-    {
-        string str = n.ToString();
-
-        while (str.Length < 7)
-        {
-            str = "0" + str;
-        }
-        return str;
-    }
-    
     public int score;
-
     private GameObject scoreText;
-
 
     void Start()
     {
@@ -39,8 +20,6 @@ public class GameScript : MonoBehaviour
         {
             this.score = 9999999;
         }
-
-
-        this.scoreText.GetComponent<Text>().text = getScoreString(this.score);
+        this.scoreText.GetComponent<Text>().text = this.score.ToString("0000000");
     }
 }

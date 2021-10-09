@@ -18,18 +18,9 @@ public class BrightnessRegulator : MonoBehaviour
     // ターゲットのデフォルトの色
     Color defaultColor = Color.white;
 
-
-
-
-
     // Use this for initialization
     void Start()
     {
-
-        
-
-        //Debug.Log();
-        
         // タグによって光らせる色を変える
         if (tag == "SmallStarTag")
         {
@@ -54,7 +45,6 @@ public class BrightnessRegulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (this.degree >= 0)
         {
             // 光らせる強度を計算する
@@ -65,7 +55,6 @@ public class BrightnessRegulator : MonoBehaviour
 
             //現在の角度を小さくする
             this.degree -= this.speed;
-
         }
     }
 
